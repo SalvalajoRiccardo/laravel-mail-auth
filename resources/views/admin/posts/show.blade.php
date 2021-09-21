@@ -8,6 +8,9 @@
 
     <div class="card-body">
         <h5 class="card-title">Title: {{$post->title}}</h5>
+        @if($post->cover)
+            <img src="{{ asset('storage/' . $post->cover)}} " alt="">
+        @endif
         <p class="card-text">content: {{$post->content}}</p>
         <p class="card-text">category:  
             @if ($post->category)

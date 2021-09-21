@@ -40,11 +40,11 @@
 
             <div class="mb-3">
                 <label for="img-up" class="form-label">image</label>
-                <input type="file" class="form-control-file" id="img-up" name="immagine" 
-                @error('immagine') 
+                <input type="file" class="form-control-file" id="img-up" name="image" 
+                @error('image') 
                 is-invalid 
                 @enderror>
-                @error('immagine')
+                @error('image')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror  
             </div>

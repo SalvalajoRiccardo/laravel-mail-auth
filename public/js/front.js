@@ -2148,6 +2148,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SinglePost',
   data: function data() {
@@ -38262,6 +38263,13 @@ var render = function() {
         _c("h5", { staticClass: "card-title" }, [
           _vm._v("Title: " + _vm._s(_vm.post.title))
         ]),
+        _vm._v(" "),
+        _vm.post.cover
+          ? _c("img", {
+              staticClass: "card-img-top",
+              attrs: { src: _vm.post.cover, alt: _vm.post.title }
+            })
+          : _vm._e(),
         _vm._v(" "),
         _c("p", { staticClass: "card-text" }, [
           _vm._v("content: " + _vm._s(_vm.post.content))

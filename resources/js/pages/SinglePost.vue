@@ -6,6 +6,7 @@
 
         <div class="card-body">
             <h5 class="card-title">Title: {{ post.title}}</h5>
+            <img v-if="post.cover" :src="post.cover" :alt="post.title" class="card-img-top">
             <p class="card-text">content: {{ post.content}}</p>
             <p v-if="post.category" class="card-text">category: {{ post.category.name}}</p>
             <h5>Tags</h5>

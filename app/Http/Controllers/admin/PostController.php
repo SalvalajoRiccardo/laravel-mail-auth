@@ -64,8 +64,8 @@ class PostController extends Controller
         if(array_key_exists('image',$data)){
             $cover_path = Storage::put('covers', $data['image']);
             $data['cover'] = $cover_path;
-        $newpost->fill($data);
         }
+        $newpost->fill($data);
         $newpost->save();
 
         if(isset($data['tags'])){
@@ -113,7 +113,8 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|max:60',
             'content' => 'required',
-            'category_id' => 'nullable|exists:categories,id'
+            'category_id' => 'nullable|exists:categories,id',
+            'image' => 'nullable|image'
         ]);
         $data = $request->all();
 
@@ -131,6 +132,13 @@ class PostController extends Controller
             }
             $data['slug'] = $slug;
         }
+
+        if(array_key_exists('image',$data)){
+            $cover_path = Storage::put('covers', $data['image']);
+            Storage::delete($post->cover);
+            $data['cover'] = $cover_path;
+        }
+
         $post->update($data);
 
         if(isset($data['tags'])){
@@ -148,6 +156,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        Storage::delete($post->cover);
         $post->delete();
         return redirect()->route('admin.posts.index')->with('destroyed', 'Hai cancellato: ' . $post->slug);
     }
