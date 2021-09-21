@@ -3,14 +3,14 @@
 @section('content')
 
     <div class="container">
-        <form action="{{ route('admin.posts.store') }}" method="post">
+        <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="titolo" class="form-label">Titolo</label>
-                <input type="text" class="form-control 
+                <input type="text" class="form-control" 
                 @error('title') 
                     is-invalid 
-                @enderror" id="titolo" name="title" value="{{old('title')}}">
+                @enderror id="titolo" name="title" value="{{old('title')}}">
                 @error('title')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -30,12 +30,23 @@
             <div class="mb-3">
                 <label for="desc" class="form-label">Descrizione</label>
                 <textarea class="form-control 
-                @error('title') 
+                @error('content') 
                     is-invalid 
                 @enderror" name="content" id="desc" cols="30" rows="10">{{old('content')}}</textarea> 
                 @error('content')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror           
+            </div>
+
+            <div class="mb-3">
+                <label for="img-up" class="form-label">image</label>
+                <input type="file" class="form-control-file" id="img-up" name="immagine" 
+                @error('immagine') 
+                is-invalid 
+                @enderror>
+                @error('immagine')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror  
             </div>
 
             <h5>Tags</h5>
