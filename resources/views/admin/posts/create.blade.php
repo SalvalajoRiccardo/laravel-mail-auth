@@ -4,6 +4,7 @@
 
     <div class="container">
         <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
+            ciao
             @csrf
             <div class="mb-3">
                 <label for="titolo" class="form-label">Titolo</label>
